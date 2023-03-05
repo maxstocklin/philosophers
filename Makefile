@@ -1,8 +1,8 @@
 # Compilation setting
 NAME	=	philo
 
-FLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=thread
-LDFLAGS =	-fsanitize=thread
+FLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=thread
+LDFLAGS =	#-fsanitize=thread
 CC		=	gcc
 RM		= 	rm -rf 
 AR		=	ar rcs

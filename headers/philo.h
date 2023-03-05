@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 19:20:51 by mstockli          #+#    #+#             */
-/*   Updated: 2023/02/28 15:21:42 by mstockli         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:31:58 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 
 # define MS 1000
+# define PM pthread_mutex_t
 
 typedef struct s_philo
 {
@@ -32,8 +33,20 @@ typedef struct s_philo
 	int				eat_max;
 	int				times_eaten;
 	pthread_mutex_t	*mutx;
+	pthread_mutex_t	*print_mutx;
 	pthread_mutex_t	*time_mutx;
+	int				*print;
 }					t_philo;
+
+typedef struct s_struct
+{
+	pthread_mutex_t	*mutx;
+	pthread_mutex_t	*time_mutx;
+	pthread_mutex_t	*print_mutx;
+	pthread_t		*threads;
+	pthread_t		*timer_threads;
+
+}					t_struct;
 
 void	*philosophers_thread(void *args);
 void	ft_bon_app(int elapsed_ms, t_philo *philo, struct timeval st, \

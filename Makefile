@@ -33,6 +33,8 @@ OBJS_DIR 		= 	objects/
 SRC_HEADER		=	philo.h
 SRC_FILES		=	main.c \
 					threads.c \
+					timer_threads.c \
+					init.c \
 					check.c
 
 SRCS			=	$(addprefix $(PROJECT_DIR),$(SRC_FILES))

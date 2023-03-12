@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:20:39 by mstockli          #+#    #+#             */
-/*   Updated: 2023/01/11 16:41:45 by mstockli         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:46:21 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
+
+void	ft_error(void)
+{
+	printf("Invalid parameters\n");
+	exit(0);
+}
 
 int	atoi_check(const char *str, int i)
 {

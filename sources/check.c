@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:20:39 by mstockli          #+#    #+#             */
-/*   Updated: 2023/03/05 19:46:21 by max              ###   ########.fr       */
+/*   Updated: 2023/03/21 15:01:29 by mstockli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
 
-void	ft_error(void)
+int	ft_error(void)
 {
 	printf("Invalid parameters\n");
-	exit(0);
+	return (0);
 }
 
 int	atoi_check(const char *str, int i)
@@ -84,7 +84,7 @@ int	check_ints(char **av)
 				j++;
 			if (av[i][j] > '9' || av[i][j] < '0')
 				return (1);
-			if (atoi(av[i]) < 1)
+			if (ft_atoi(av[i]) < 1)
 				return (1);
 			j++;
 			sign++;

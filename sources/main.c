@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:28:44 by mstockli          #+#    #+#             */
-/*   Updated: 2023/03/05 19:48:06 by max              ###   ########.fr       */
+/*   Updated: 2023/03/21 15:03:44 by mstockli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	ft_free(t_struct data, t_philo *philo, int sz)
 
 void	ft_create_threads(t_struct data, t_philo *philo, int i, char **av)
 {
-	while (++i < atoi(av[1]))
+	while (++i < ft_atoi(av[1]))
 	{
 		pthread_create(&data.threads[i], NULL, philosophers_thread, &philo[i]);
 		pthread_create(&data.timer_threads[i], NULL, timer_thread, &philo[i]);
 	}
-	ft_join(atoi(av[1]), data.threads, data.timer_threads);
-	ft_free(data, philo, atoi(av[1]));
+	ft_join(ft_atoi(av[1]), data.threads, data.timer_threads);
+	ft_free(data, philo, ft_atoi(av[1]));
 }
 
 int	ft_philosophers(int ac, char **av)
@@ -47,13 +47,14 @@ int	ft_philosophers(int ac, char **av)
 	int			i;
 	int			print;
 
-	malloc_mtx_thrds(&data, av);
-	philo = malloc(atoi(av[1]) * sizeof(t_philo));
+	if (malloc_mtx_thrds(&data, av) == -1)
+		return (-1);
+	philo = malloc(ft_atoi(av[1]) * sizeof(t_philo));
 	if (!philo)
-		exit (0);
+		return (-1);
 	i = -1;
 	print = 1;
-	while (++i < atoi(av[1]))
+	while (++i < ft_atoi(av[1]))
 	{
 		pthread_mutex_init(&data.mutx[i], NULL);
 		philo[i].mutx = data.mutx;
@@ -73,8 +74,9 @@ int	main(int ac, char **av)
 	if (ac == 5 || ac == 6)
 	{
 		if (check_ints(av) == 1 || check_max_ints(av) == 1)
-			ft_error();
-		ft_philosophers(ac, av);
+			return (ft_error());
+		if (ft_philosophers(ac, av) == -1)
+			return (0);
 	}
 	else
 		ft_error();

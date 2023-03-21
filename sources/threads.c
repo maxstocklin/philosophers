@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:43:57 by mstockli          #+#    #+#             */
-/*   Updated: 2023/03/12 12:41:54 by max              ###   ########.fr       */
+/*   Updated: 2023/03/21 14:48:41 by mstockli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ struct timeval ct)
 	if (*(philo->print) == 1)
 		printf("%d %d has taken a fork\n", elapsed_ms, philo->p_id + 1);
 	pthread_mutex_unlock(&philo->print_mutx[0]);
+	if (philo->p_nb < 2)
+		return ;
 	pthread_mutex_lock(&philo->mutx[(philo->p_id)]);
 	gettimeofday(&ct, NULL);
 	elapsed_ms = (ct.tv_sec - st.tv_sec) * MS + (ct.tv_usec - st.tv_usec) / MS;
@@ -58,6 +60,8 @@ struct timeval st, struct timeval ct)
 {
 	pthread_mutex_lock(&philo->mutx[(philo->p_id + 1) % philo->p_nb]);
 	ft_bon_app(elapsed_ms, philo, st, ct);
+	if (philo->p_nb < 2)
+		return ;
 	pthread_mutex_unlock(&philo->mutx[(philo->p_id + 1) % philo->p_nb]);
 	gettimeofday(&ct, NULL);
 	elapsed_ms = (ct.tv_sec - st.tv_sec) * MS + (ct.tv_usec - st.tv_usec) / MS;
@@ -93,7 +97,7 @@ void	*philosophers_thread(void *args)
 		eat_sleep_rinse_repeat(elapsed_ms, philo, st, ct);
 		if (philo->eat_max != -1 && philo->eat_max <= philo->times_eaten)
 			break ;
-		if (check_dead(philo) == 1)
+		if (check_dead(philo) == 1 || philo->p_nb < 2)
 			break ;
 	}
 	return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   timer_threads.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:38:13 by max               #+#    #+#             */
-/*   Updated: 2023/03/05 20:38:36 by max              ###   ########.fr       */
+/*   Updated: 2023/03/21 14:56:12 by mstockli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	ft_exit(t_time timer, int philow, int time_to_die, t_philo *philo)
 {
 	int	t_ms;
 
+	pthread_mutex_lock(&philo->time_mutx[philo->p_id]);
 	if (philo->times_eaten > 1)
 		t_ms = timer.total_ms;
 	else
 		t_ms = timer.elapsed_ms;
+	pthread_mutex_unlock(&philo->time_mutx[philo->p_id]);
 	if ((timer.elapsed_ms >= time_to_die))
 	{
 		pthread_mutex_lock(&philo->print_mutx[0]);

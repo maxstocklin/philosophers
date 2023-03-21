@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mstockli <mstockli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 19:20:51 by mstockli          #+#    #+#             */
-/*   Updated: 2023/03/12 12:39:48 by max              ###   ########.fr       */
+/*   Updated: 2023/03/21 15:03:30 by mstockli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <sys/time.h>
 
 # define MS 1000
-# define PM pthread_mutex_t
 
 typedef struct s_philo
 {
@@ -63,8 +62,8 @@ void	*philosophers_thread(void *args);
 void	ft_bon_app(int elapsed_ms, t_philo *philo, struct timeval st, \
 struct timeval ct);
 
-void	eat_sleep_rinse_repeat(int elapsed_ms, t_philo *philo, struct timeval st, \
-struct timeval ct);
+void	eat_sleep_rinse_repeat(int elapsed_ms, t_philo *philo, \
+struct timeval st, struct timeval ct);
 
 void	ft_exit(t_time timer, int philow, int time_to_die, t_philo *philo);
 void	ft_mutex_eaten(t_philo *philo, t_time *timer);
@@ -76,10 +75,12 @@ int		atoi_check(const char *str, int i);
 int		check_max_ints(char **av);
 int		check_ints(char **av);
 int		ft_check_error(char **av);
-void	ft_error(void);
+int		ft_error(void);
 
 void	init_philo(t_philo *philo, char **av, int ac, int i);
 void	ft_join(int sz, pthread_t *threads, pthread_t *timer_threads);
-void	malloc_mtx_thrds(t_struct *data, char **av);
+int		malloc_mtx_thrds(t_struct *data, char **av);
+
+int		ft_atoi(const char *s);
 
 #endif

@@ -1,7 +1,7 @@
 # Compilation setting
 NAME	=	philo
 
-FLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=thread
+FLAGS	=	-Wall -Wextra -Werror -g3 -pthread #-fsanitize=thread
 LDFLAGS =	#-fsanitize=thread
 CC		=	gcc
 RM		= 	rm -rf 
@@ -33,6 +33,7 @@ OBJS_DIR 		= 	objects/
 SRC_HEADER		=	philo.h
 SRC_FILES		=	main.c \
 					threads.c \
+					ft_atoi.c \
 					timer_threads.c \
 					init.c \
 					check.c

@@ -48,5 +48,5 @@ Here is an example:
 
 ## Contributing
 
-MiniShell is an open-source project, and contributions are always welcome! If you have any bug reports, feature requests, or questions, please open an issue on this GitHub repository.
+Philosophers is an open-source project, and contributions are always welcome! If you have any bug reports, feature requests, or questions, please open an issue on this GitHub repository.
 

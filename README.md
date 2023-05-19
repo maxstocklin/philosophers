@@ -45,7 +45,7 @@ The program accepts the following command-line arguments:
 Here is an example:
 
     ```bash
-      ./philosophers 5 8000 2000 2000 7
+    ./philosophers 5 8000 2000 2000 7
     ```
 
 ## Contributing

@@ -9,10 +9,9 @@ This program is a multithreaded simulation based on the classic concurrency prob
 
 The program:
 
-Is written in C and uses mutexes and threads to ensure there are no data races.
-Takes command-line arguments to customize the simulation (number of philosophers, time parameters, etc.).
-Allows the user to define the number of times each philosopher must eat before ending the simulation.
-Installation and Usage
+- Is written in C and uses mutexes and threads to ensure there are no data races.
+- Takes command-line arguments to customize the simulation (number of philosophers, time parameters, etc.).
+- Allows the user to define the number of times each philosopher must eat before ending the simulation.
 
 ## Installation
 

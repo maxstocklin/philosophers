@@ -42,7 +42,7 @@ The program accepts the following command-line arguments:
 - ```time_to_sleep``` (in milliseconds): The time a philosopher will spend sleeping.
 - ```number_of_times_each_philosopher_must_eat``` (optional argument): If all philosophers have eaten at least number_of_times_each_philosopher_must_eat times, the simulation stops. If not specified, the simulation stops when a philosopher dies.
 
-Here is an example:
+Example:
 
     ./philosophers 5 8000 2000 2000 7
 

@@ -1,11 +1,11 @@
 # The Dining Philosophers Problem
 
 
-Description
+## Description
 
 This program is a multithreaded simulation based on the classic concurrency problem known as the "Dining Philosophers". It depicts philosophers who spend their lives thinking, eating, and sleeping. The simulation takes into account the challenge that arises due to the requirement of the philosophers needing two forks to eat and the fact that they share these forks with their neighbors.
 
-Features
+## Features
 
 The program:
 

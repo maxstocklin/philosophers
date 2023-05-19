@@ -36,7 +36,7 @@ Installation and Usage
 
 The program accepts the following command-line arguments:
 
-- **number_of_philosophers**: The number of philosophers and also the number of forks.
+- ```**number_of_philosophers**```: The number of philosophers and also the number of forks.
 - **time_to_die** (in milliseconds): If a philosopher doesn’t start eating time_to_die milliseconds after the start of their last meal or the beginning of the simulation, they die.
 - **time_to_eat** (in milliseconds): The time it takes for a philosopher to eat. During that time, they will need to hold two forks.
 - **time_to_sleep** (in milliseconds): The time a philosopher will spend sleeping.
